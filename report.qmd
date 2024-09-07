@@ -76,6 +76,58 @@ datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'
 # load the first datastore resource as a sample
 raw_data <- filter(datastore_resources, row_number()==1) %>% get_resource()
 head(raw_data)
+
+write_csv(
+  x = raw_data,
+  file = "toronto_beaches.csv"
+)
 ```
 
 ## Clean the data
+Read the csv
+```{r}
+raw_toronto_beaches_data <-
+  read_csv(
+    file = "toronto_beaches.csv",
+    show_col_types = FALSE
+  )
+head(raw_toronto_beaches_data)
+```
+
+Clean names
+
+```{r}
+cleaned_beaches_data <-
+    clean_names(raw_toronto_beaches_data)
+head(cleaned_beaches_data)
+```
+
+keep only the necessary date and water temperature information
+```{r}
+cleaned_beaches_data <-
+  cleaned_beaches_data |>
+  select(
+    data_collection_date,
+    water_temp
+  )
+
+cleaned_beaches_data <-
+  cleaned_beaches_data |>
+  rename(
+    date = data_collection_date,
+    temp = water_temp
+  )
+
+head(cleaned_beaches_data)
+names(cleaned_beaches_data)
+
+```
+
+Write the new csv
+
+```{r}
+write_csv(
+  x = cleaned_beaches_data,
+  file = "cleaned_beaches_data.csv"
+)
+```
