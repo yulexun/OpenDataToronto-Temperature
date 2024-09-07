@@ -79,7 +79,7 @@ head(raw_data)
 
 write_csv(
   x = raw_data,
-  file = "toronto_beaches.csv"
+  file = "input/toronto_beaches.csv"
 )
 ```
 
@@ -88,7 +88,7 @@ Read the csv
 ```{r}
 raw_toronto_beaches_data <-
   read_csv(
-    file = "toronto_beaches.csv",
+    file = "input/toronto_beaches.csv",
     show_col_types = FALSE
   )
 head(raw_toronto_beaches_data)
@@ -128,6 +128,6 @@ Write the new csv
 ```{r}
 write_csv(
   x = cleaned_beaches_data,
-  file = "cleaned_beaches_data.csv"
+  file = "output/cleaned_beaches_data.csv"
 )
 ```
