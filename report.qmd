@@ -1,0 +1,81 @@
+---
+title: "Water Temperature at Bluffer's Beach Park in Toronto"
+author: "Yu, Lexun"
+date: format(Sys.time(), "%d %B %Y")
+format: html
+abstract: "This is a Quarto file that downloads a dataset using opendatatoronto, cleans it, and makes a graph."
+bibliography: bibliography.bib
+---
+
+```{r}
+#| echo: false
+#| include: false
+library(opendatatoronto)
+library(dplyr)
+library(knitr)
+library(janitor)
+library(lubridate)
+library(tidyverse)
+```
+
+# Plan
+
+The dataset I am interested in would need to have the date, and the water temperature. A quick sketch of a dataset that would work is @fig-plan-quick-sketch, I am interested in the water temperature each month, the table would be like @fig-plan-table-created: 
+
+::: {#fig-plan layout-ncol="2" layout-valign="bottom"}
+![Quick sketch of a dataset](Figures/figure1a-quick-sketch-of-dataset.png){#fig-plan-quick-sketch width="45%"}
+
+![Quick sketch of a table of the average water temperature each month](Figures/figure1b-table-created.png){#fig-plan-table-created width="45%"}
+
+Sketches of a potential dataset and graph related to Bluffer's Beach Park's water temperature.
+:::
+
+# Simulate
+```{r}
+citation()
+citation("ggplot2")
+```
+
+After examining the raw data, I found that there is only data between May and September. So, I am only generating simulated data between May and September
+```{r}
+set.seed(853)
+
+simulated_temp_data <- 
+    tibble(
+        date = rep(x = as.Date("2016-05-01") + c(0:152), times = 1),
+        water_temp = rpois(
+            n = 153 * 1,
+            lambda = 16
+        )
+    )
+
+head(simulated_temp_data)
+```
+
+## Acquire and display the raw data
+
+The following terminal output displays the raw data obtained from [opendatatoronto](https://open.toronto.ca/dataset/events-at-nathan-phillips-square/).
+```{r}
+#| echo: false
+#| include: false
+
+# get package
+package <- show_package("toronto-beaches-observations")
+package
+ 
+# get all resources for this package
+resources <- list_package_resources("toronto-beaches-observations")
+ 
+# identify datastore resources; by default, Toronto Open Data sets datastore resource format to CSV for non-geospatial and GeoJSON for geospatial resources
+datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
+```
+
+```{r}
+#| echo: false
+
+# load the first datastore resource as a sample
+raw_data <- filter(datastore_resources, row_number()==1) %>% get_resource()
+head(raw_data)
+```
+
+## Clean the data
