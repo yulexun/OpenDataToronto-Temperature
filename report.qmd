@@ -1,7 +1,8 @@
 ---
 title: "Water Temperature at Beaches in Toronto"
 author: "Yu, Lexun"
-date: format(Sys.time(), "%d %B %Y")
+date: "`r Sys.time()`"
+date-format: medium
 format: html
 abstract: "This is a Quarto file that downloads a dataset using opendatatoronto, cleans it, and makes a graph."
 bibliography: bibliography.bib
