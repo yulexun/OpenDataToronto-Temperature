@@ -27,6 +27,13 @@ The dataset I am interested in would need to have the date, and the water temper
 
 ![Quick sketch of a table of the average water temperature each month](Figures/figure1b-table-created.png){#fig-plan-table-created width="45%"}
 
+Sketches of a potential dataset and table related to water temperature.
+:::
+
+Them I will draw a geom_point graph like: 
+
+::: {#fig-plan layout-ncol="1" layout-valign="bottom"}
+![Quick sketch of a graph](Figures/figure2-graph.png.png){#fig-graph width="100%"}
 Sketches of a potential dataset and graph related to water temperature.
 :::
 
@@ -137,13 +144,31 @@ beaches_clean <-
     read_csv("output/cleaned_beaches_data.csv", show_col_types = FALSE)
 ```
 
+Group the cleaned data by year.
 ```{r}
-beaches_clean |>
+summary_data <- beaches_clean |>
   mutate(temp_year = year(date)
   ) |>
   arrange(year(date)) |> 
   drop_na(temp) |> 
   summarise(number_temp = mean(temp),
-            .by = temp_year) |>
-  kable()
+            .by = temp_year)
+
+write_csv(summary_data, file = "output/cleaned_beaches_data_year.csv")
+summary_data |> kable()
+```
+
+
+
+# Explore
+
+I can now make a graph of how water temperature change over time. 
+
+```{r}
+summary_data |>
+  ggplot(aes(x = temp_year, y = number_temp)) +
+  geom_point() +
+  labs(x = "Year", y = "Water Temperature") +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom")
 ```
