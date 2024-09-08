@@ -1,5 +1,5 @@
 ---
-title: "Water Temperature at Bluffer's Beach Park in Toronto"
+title: "Water Temperature at Beaches in Toronto"
 author: "Yu, Lexun"
 date: format(Sys.time(), "%d %B %Y")
 format: html
@@ -27,7 +27,7 @@ The dataset I am interested in would need to have the date, and the water temper
 
 ![Quick sketch of a table of the average water temperature each month](Figures/figure1b-table-created.png){#fig-plan-table-created width="45%"}
 
-Sketches of a potential dataset and graph related to Bluffer's Beach Park's water temperature.
+Sketches of a potential dataset and graph related to water temperature.
 :::
 
 # Simulate
@@ -130,4 +130,20 @@ write_csv(
   x = cleaned_beaches_data,
   file = "output/cleaned_beaches_data.csv"
 )
+```
+
+```{r}
+beaches_clean <-
+    read_csv("output/cleaned_beaches_data.csv", show_col_types = FALSE)
+```
+
+```{r}
+beaches_clean |>
+  mutate(temp_year = year(date)
+  ) |>
+  arrange(year(date)) |> 
+  drop_na(temp) |> 
+  summarise(number_temp = mean(temp),
+            .by = temp_year) |>
+  kable()
 ```
