@@ -30,10 +30,12 @@ The dataset I am interested in would need to have the date, and the water temper
 Sketches of a potential dataset and table related to water temperature.
 :::
 
-Them I will draw a geom_point graph like: 
+Them I will draw a geom_point graph like @fig-graph: 
 
 ::: {#fig-plan layout-ncol="1" layout-valign="bottom"}
-![Quick sketch of a graph](Figures/figure2-graph.png.png){#fig-graph width="100%"}
+
+![Quick sketch of a graph](Figures/figure2-graph.png){#fig-graph width="100%"}
+
 Sketches of a potential dataset and graph related to water temperature.
 :::
 
