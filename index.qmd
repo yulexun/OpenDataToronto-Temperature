@@ -41,10 +41,9 @@ Sketches of a potential dataset and graph related to water temperature.
 :::
 
 # Simulate
-```{r}
-citation()
-citation("ggplot2")
-```
+
+This document uses @r and @ggplot2
+
 
 After examining the raw data, I found that there is only data between May and September. So, I am only generating simulated data between May and September
 ```{r}
@@ -175,3 +174,5 @@ summary_data |>
   scale_color_brewer(palette = "Set1") +
   theme(legend.position = "bottom")
 ```
+
+# Bibliography
