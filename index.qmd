@@ -63,7 +63,7 @@ head(simulated_temp_data)
 
 ## Acquire and display the raw data
 
-The following terminal output displays the raw data obtained from [opendatatoronto](https://open.toronto.ca/dataset/events-at-nathan-phillips-square/).
+The following terminal output displays the raw data obtained from [opendatatoronto](https://open.toronto.ca/dataset/toronto-beaches-observations/).
 ```{r}
 #| echo: false
 #| include: false
