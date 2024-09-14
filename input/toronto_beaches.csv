@@ -17900,7 +17900,7 @@ _id,dataCollectionDate,beachName,windSpeed,windDirection,airTemp,rain,rainAmount
 17899,2024-06-06,Kew Balmy Beach,8,SW,17,Yes,1,18,50,NONE,Cloudy ,NA
 17900,2024-06-06,Bluffer's Beach Park,8,SW,17,Yes,1,15,2,NONE,Clear,NA
 17901,2024-09-04,Marie Curtis Park East Beach,4,SE,13,No,NA,NA,NA,None,None,NA
-17902,2024-09-04,Sunnyside Beach,4,SE,13,No,NA,18,52,NONE,clear,NA
+17902,2024-09-04,Sunnyside Beach,4,SE,13,No,NA,18,52,NONE,clear,5.97
 17903,2024-09-04,Hanlan's Point Beach,4,SE,13,No,NA,NA,NA,None,None,NA
 17904,2024-09-04,Gibraltar Point Beach,4,SE,13,No,NA,NA,NA,None,None,NA
 17905,2024-09-04,Centre Island Beach,4,SE,13,No,NA,NA,NA,None,None,NA
